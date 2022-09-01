@@ -1,0 +1,121 @@
+.projects {
+  .project {
+    &__top {
+      --ptInfo: 40px;
+      --pbInfo: 60px;
+      &-heading {
+        @include text(
+          var(--body26-fs),
+          $font-secondary,
+          normal,
+          $text-black-cl,
+          uppercase
+        );
+      }
+      &-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        position: relative;
+        padding-top: var(--ptInfo);
+        padding-bottom: var(--pbInfo);
+        &.line {
+          &:after {
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            background-color: $line-brown-cl;
+          }
+        }
+        .info {
+          max-width: 455px;
+          @include text(
+            var(--body12-fs),
+            $font-main,
+            var(--body12-lh-26),
+            $text-black-cl,
+            none
+          );
+        }
+        .project-btn {
+          cursor: pointer;
+          font-weight: bold;
+          position: relative;
+          @include text(
+            var(--body11-fs),
+            $font-main,
+            normal,
+            $white-cl,
+            uppercase
+          );
+          .title {
+            @include mid(true);
+            background-color: $black-cl;
+            padding: 11px 20px 11px 40px;
+            span {
+             width: 125px;
+            }
+          }
+          .project-option {
+            background-color: $yellow-2-cl;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            & > p {
+              padding-left: 40px;
+              height: 48px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px solid $line-brown-cl;
+            }
+            p {
+              &:first-child {
+                height: 60px;
+                padding-top: 10px;
+              }
+              &:hover {
+                color: $black-cl;
+              }
+            }
+            @include transition($t);
+            @include visible(0);
+          }
+          &.is-active {
+            .project-option {
+              @include visible(1);
+              @include transition($t);
+            }
+          }
+        }
+      }
+    }
+    &__bottom {
+      padding: 85px 0;
+      .numbers {
+        padding-top: 70px;
+      }
+    }
+  }
+  @include sm {
+    .project {
+      &__top {
+        --ptInfo: 10px;
+        --pbInfo: 40px;
+        &-wrap {
+          flex-direction: column;
+          align-items: flex-start;
+          .info {
+            max-width: 100%;
+            padding-bottom: 20px;
+          }
+        }
+      }
+      &__bottom {
+        padding-top: 40px;
+        padding-bottom: 60px;
+      }
+    }
+  }
+}

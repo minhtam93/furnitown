@@ -1,0 +1,111 @@
+.servicepage {
+  h3 {
+    @include text(
+      var(--body26-fs),
+      $font-secondary,
+      normal,
+      $text-black-cl,
+      uppercase
+    );
+    letter-spacing: var(--body26-ls);
+  }
+  @include text(
+    var(--body12-fs),
+    $font-main,
+    var(--body12-lh-26),
+    $text-black-cl,
+    none
+  );
+  letter-spacing: 1.2px;
+
+  .--pd {
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+  .service {
+    &__top {
+      --gapdesign: 100px;
+      &-heading {
+        @include text(
+          var(--body32-fs),
+          $font-secondary,
+          normal,
+          $text-black-cl,
+          uppercase
+        );
+        letter-spacing: var(--body32-ls-100);
+        text-align: center;
+      }
+      &-img {
+        padding-top: 27px;
+      }
+      &-design {
+        padding: 40px 0 75px 30px;
+        border-bottom: 1px solid $line-gray-dark-cl;
+        .wrap {
+          padding-top: 40px;
+          &.grid {
+            gap: var(--gapdesign);
+            .btns {
+              padding-top: 10px;
+            }
+          }
+          .desc {
+            max-width: 440px;
+            .requiment {
+              padding-top: 33px;
+            }
+          }
+        }
+      }
+    }
+    &__bottom {
+      padding-top: 80px;
+      text-align: center;
+      p {
+        max-width: 595px;
+        margin: auto;
+        padding-top: 15px;
+        padding-bottom: 50px;
+      }
+      &-img {
+        position: relative;
+        height: 0;
+        padding-bottom: 50%;
+        img {
+          @include size(100%);
+          object-fit: cover;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+  @include sm {
+    .service {
+      &__top {
+        --gapdesign: 30px;
+      }
+    }
+  }
+  @include xs {
+    .--pd {
+      padding-top: 50px;
+    }
+
+    .service {
+      &__top {
+        &-design {
+          padding: 20px 0 50px 20px;
+          .wrap {
+            padding-top: 10px;
+          }
+        }
+      }
+      &__bottom {
+        padding-top: 40px;
+      }
+    }
+  }
+}

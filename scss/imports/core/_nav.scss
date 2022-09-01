@@ -1,0 +1,183 @@
+.menubar {
+  --gapMenu: 40px;
+  z-index: 5;
+  position: absolute;
+  left: 0;
+  background-color: $bcg-secondary-cl;
+  width: 505px;
+  height: 100vh;
+  padding-left: 42px;
+  padding-right: 35px;
+  padding: 45px 35px 0 42px;
+  @include transition(all 0.5s ease-in-out);
+  @include transform(translate(-100%, 0));
+  &.is-active {
+    @include transition(all 0.5s ease-in-out);
+    @include transform(translate(0px, 0px));
+  }
+  &__top {
+    @include mid(true);
+    justify-content: space-between;
+    &-title {
+      a {
+        font-weight: bold;
+        @include text(
+          var(--slider11-fs),
+          $font-main,
+          normal,
+          $white-cl,
+          uppercase
+        );
+      }
+    }
+    &-follow {
+      @include mid(true);
+      font-weight: bold;
+      @include text(
+        var(--slider11-fs),
+        $font-main,
+        normal,
+        $white-cl,
+        uppercase
+      );
+      .item {
+        margin-right: 20px;
+      }
+    }
+  }
+  &__bottom {
+    padding-top: 135px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 310px;
+    &-left {
+      margin-right: 80px;
+      .logo {
+        position: relative;
+        margin-bottom: 40px;
+        &:after {
+          content: "";
+          background-color: $white-cl;
+          height: 1px;
+          width: 83px;
+          position: absolute;
+          top: 60px;
+          left: -20px;
+        }
+      }
+      .close {
+        height: 100%;
+        cursor: pointer;
+      }
+    }
+    &-right {
+      ul {
+        padding-top: 15px;
+        > li {
+          margin-bottom: var(--gapMenu);
+        }
+        li {
+          position: relative;
+          &:after {
+            content: "";
+            height: 1px;
+            width: 0;
+            background-color: $white-cl;
+            position: absolute;
+            top: 45px;
+            left: -30px;
+            @include transition($t);
+            @include transform(translateX(0));
+          }
+          a {
+            @include text(
+              var(--menubar26-fs),
+              $font-secondary,
+              normal,
+              $gray-cl,
+              uppercase
+            );
+            &.fag {
+              font-size: var(--menubar14-fs);
+            }
+          }
+          &:hover {
+            a {
+              color: $white-cl;
+              @include transition($t);
+            }
+            &:after {
+              @include transition($t);
+              width: 340px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-device-width: 1366px) {
+    &__bottom {
+      padding-top: 70px;
+    }
+  }
+  @include md {
+    --gapMenu: 40px;
+    &__bottom {
+      padding-top: 50px;
+    }
+  }
+  @include xs {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 20px;
+    padding-left: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    @include transform(translate(-100%,70px));
+    &.is-active {
+      @include transform(translate(0, 70px));
+    }
+
+    &__bottom {
+      display: block;
+      width: unset;
+      &-left {
+        display: none;
+      }
+      &-right {
+        text-align: center;
+        ul {
+          li {
+            &:after {
+              left: 50%;
+              transform: translateX(-50%);
+            }
+            &:hover:after {
+              width: 200px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.overlay {
+  cursor: pointer;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.8);
+  @include visible(0);
+  @include transition(0.5s ease-in-out);
+  &.is-active {
+    @include visible(1);
+    @include transition(0.5s ease-in-out);
+  }
+}

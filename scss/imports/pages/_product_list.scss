@@ -1,0 +1,38 @@
+.productlistpage {
+  --ptViewMore: 130px;
+  --pbViewMore: 35px;
+  .products {
+    padding-top: 95px;
+    .product-list {
+      margin-bottom: unset !important;
+    }
+    .view-more {
+      height: 100%;
+      text-align: center;
+      padding-top: var(--ptViewMore);
+      padding-bottom: var(--pbViewMore);
+      flex-direction: column;
+      @include mid(true);
+      img {
+        transform: rotate(90deg);
+        max-width: 22px;
+      }
+      span {
+        margin-top: 20px;
+        @include text(11px, $font-main, normal, $black-cl, uppercase);
+      }
+      &:hover {
+        span {
+          color: $yellow-cl;
+          @include transition($t);
+        }
+      }
+    }
+  }
+  @include xs {
+    --ptViewMore: 70px;
+    .products {
+      padding-top: 50px;
+    }
+  }
+}

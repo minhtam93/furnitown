@@ -1,0 +1,201 @@
+//======================================================BOXED LAYOUT=======================================================
+
+$container-max-width: 2200px;
+$container-width: 1060px; // tùy thuộc vào container của bản thiết kế // $container-width = container (đo từ bản thiết kế) + 30px
+
+/*GRID - media queries breakpoints*/
+$xxs-min: 576px; // CÓ THỂ TÙY CHỈNH
+$xs-min: 768px; // KHÔNG THAY ĐỔI
+$sm-min: 992px; // KHÔNG THAY ĐỔI
+$md-min: 1200px; // KHÔNG THAY ĐỔI
+$lg-min: 1600px; // CÓ THỂ TÙY CHỈNH
+
+$xxs-max: ($xxs-min - 1); // Small Mobile
+$xs-max: ($xs-min - 1); // Mobile
+$sm-max: ($sm-min - 1); // Tablet
+$md-max: ($md-min - 1); // Desktop
+$lg-max: ($lg-min - 1); // Large Desktop
+
+//=====================================CÁC BIẾN KHÔNG THAY ĐỔI GIÁ TRỊ KHI RESPONSIVE======================================
+// colors - tuỳ chỉnh
+$white-cl: #fff;
+$black-cl: #000;
+$yellow-cl: #795f26;
+$yellow-2-cl: #705b32;
+$yellow-light-cl: #7b6128;
+$gray-cl: #5f5f5f;
+$gray-light-cl: #eee;
+$blue-light-cl: #043b55;
+$blue-dark-cl: #323c3d;
+$brown-cl: #5b4816;
+$brown-light-cl: #6d5019;
+
+//text color
+$text-yellow-cl: #c48b2c;
+$text-yellow-2-cl: #ab9051;
+$text-yellow-light-cl: #745a2d;
+$text-black-light-cl: #010101;
+$text-blacklight-2-cl: #212121;
+$text-black-dark-cl: #191919;
+$text-black-cl: #090909;
+
+
+//line color
+$line-gray-dark-cl: #acacac;
+$line-gray-light-cl: #d7d7d7;
+$line-brown-cl: #4a3c20;
+
+// background main
+$bcg-main-cl: #132539;
+$bcg-secondary-cl: #1c2022;
+
+//fonts
+$font-main: Arial, sans-serif;
+$font-secondary: "eb", sans-serif;
+$font-third: "bv", sans-serif;
+
+$gradient-cl: linear-gradient(180deg, #df1cff 0%, #814bf6 50.55%, #00bcff 100%);
+
+// timing transition - tuỳ chỉnh
+$t: 0.4s;
+$cubic: cubic-bezier(0.84, 0.13, 0.33, 0.97);
+
+// ========================================CÁC BIẾN CÓ THAY ĐỔI GIÁ TRỊ KHI RESPONSIVE=====================================
+
+:root {
+  //=========== VÍ DỤ ============//
+
+  // font-size & line-height heading
+
+  --h1-fs: 7.2rem;
+  --h1-lh: 8rem;
+
+  --h2-fs: 80px;
+  --h2-lh: 0.25;
+
+  // --h3-fs: 3.2rem;
+  // --h3-lh: 4.2rem;
+
+  // --h4-fs: 2.4rem;
+  // --h4-lh: 3.2rem;
+
+  // --h5-fs: 2rem;
+  // --h5-lh: 3rem;
+
+  --slider11-fs: 11px;
+  // --slider11-lh: 1.82;
+
+  --slider12-fs: 12px;
+  --slider12-lh: 2.17;
+
+  --slider80-fs: 80px;
+  --slider80-lh: 20px;
+
+  --menubar14-fs: 14px;
+  --menubar26-fs: 26px;
+
+  --body90-fs: 90px;
+
+  --body44-fs: 44px;
+
+  --body32-fs: 32px;
+  --body32-lh: 1.25;
+  --body32-lh-50: 1.56;  //50px
+
+  --body26-fs: 26px;
+  --body26-ls: 2.6; //100
+
+  --body24-fs: 24px;
+  --body24-lh: 2.08;
+
+  --body20-fs: 20px;
+  --body20-lh: 1.6;
+  --body20-ls: 2px;
+
+  --body18-fs: 18px;
+  --body18-lh: 2.22;
+
+  --body16-fs: 16px;
+
+  --body14-fs: 14px;
+  --body14-lh: 3.29; //46px
+  --body14-lh-26: 1.86; //26px
+
+  --body12-fs: 12px;
+  --body12-lh: 3.33; //40px
+  --body12-lh-20: 1.67; //20px
+  --body12-lh-22: 1.83;
+  --body12-lh-26: 2.17; 
+
+  --body11-fs: 11px;
+  --footer11-lh: 2.36;
+  --footer11-ls: 0.55px;
+
+  --footer10-fs: 10px;
+
+  // Genaral Variable
+
+  --gap: 30px; // gap này sử dụng cho gap cột & padding của container, container-fluid
+
+  --hTop: 100vh;
+  --height-header: 70px;
+  --height-button: 56px;
+  --ptop: 150px;
+  --pd-section: 65px;
+  --flexBasis: 30px;
+  --ptTopNoBanner: 180px;
+
+  @media (max-width: $md-max) {
+    --hTop: 75vh;
+    --menubar26-fs: 20px;
+
+    --body32-fs: 28px;
+    --body12-lh: 2.5;
+  }
+  @media (max-width: $sm-max) {
+    // Tablet
+    --body12-lh: 2;
+    --body18-lh: 2;
+    --ptTopNoBanner: 100px;
+  }
+  @media (max-width: $xs-max) {
+    // Mobile
+    --h1-fs: 3.6rem;
+    --h1-lh: 4.2rem;
+
+    --h2-fs: 2.8rem;
+    --h2-lh: 3.8rem;
+
+    --h3-fs: 2.2rem;
+    --h3-lh: 3rem;
+
+    --h4-fs: 2rem;
+    --h4-lh: 3.2rem;
+
+    --slider80-fs: 40px;
+    --slider12-lh: 2.06;
+
+    --body90-fs: 50px;
+
+    --body32-fs: 25px;
+
+    --body20-fs: 16px;
+    --body20-lh: 1.3;
+    --body20-ls: 0;
+
+    --body24-fs: 19px;
+    --body24-lh: 1.8;
+
+    --footer11-lh: 1.8;
+
+    --gap: 40px;
+
+    --height-header: 110px;
+    --pd-section: 50px;
+    --ptop: 120px;
+    --hTop: 650px;
+  }
+  @media (max-width: $xxs-max) {
+    --body24-fs: 17px;
+  }
+}

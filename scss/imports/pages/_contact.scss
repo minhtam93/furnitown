@@ -1,0 +1,144 @@
+.contactpage {
+  .mainwrapper {
+    @include text(
+      var(--body12-fs),
+      $font-main,
+      var(--body12-lh-22),
+      $white-cl,
+      none
+    );
+    letter-spacing: 1.2px;
+    background: url(/img/contact/contact.jpeg) bottom no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    &:before {
+      content: "";
+      background: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .contact {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 115px;
+    .container {
+      max-width: 830px;
+      margin: auto;
+    }
+    &__top {
+      margin-bottom: 40px;
+      &.grid {
+        column-gap: 30px;
+        row-gap: 15px;
+        grid-template-columns: 370px 115px 1fr;
+      }
+      &-heading {
+        grid-column: 1/2;
+        grid-row: 1/3;
+        .desc {
+          max-width: 310px;
+        }
+      }
+      &-hotline {
+        grid-column: 2/3;
+        grid-row: 1/2;
+      }
+      &-email {
+        grid-column: 3/4;
+        grid-row: 1/2;
+      }
+      &-adress {
+        grid-column: 2/4;
+        grid-row: 2/3;
+        .desc {
+          max-width: 325px;
+        }
+      }
+    }
+    &__bottom {
+      &-info {
+        max-width: 300px;
+        margin-bottom: 20px;
+      }
+      .form {
+        &__group {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 23px;
+          &-label {
+            margin-bottom: 5px;
+          }
+          &-control {
+            border: none;
+            background-color: transparent;
+            border-bottom: 1px solid $yellow-cl;
+            outline: none;
+            color: $white-cl;
+            height: 30px;
+            &.textarea {
+              background-attachment: local;
+              line-height: 6ch;
+              background-image: linear-gradient(
+                transparent,
+                transparent calc(6ch - 1px),
+                $yellow-cl 0px
+              );
+              background-size: 100% 6ch;
+              border-bottom: none;
+              height: 120px;
+              margin-top: -10px;
+            }
+          }
+        }
+        input[name="submit"] {
+          float: right;
+          font-size: 10px;
+          text-transform: uppercase;
+          color: $white-cl;
+          font-weight: bold;
+          padding: 10px 32px;
+          margin-top: 10px;
+          background: $black-cl;
+          border: 1px solid $yellow-cl;
+          cursor: pointer;
+          @include transition($t);
+          &:hover {
+            @include transition($t);
+            color: $black-cl;
+            background: $white-cl;
+          }
+        }
+      }
+    }
+  }
+  .google-map{
+    padding-top: 30px;
+  }
+  @include sm {
+    .contact {
+      &__top {
+        &-heading {
+          grid-column: 1/2;
+          grid-row: 1/2;
+        }
+        &-hotline {
+          grid-column: 1/2;
+          grid-row: 2/3;
+        }
+        &-email {
+          grid-column: 1/2;
+          grid-row: 3/4;
+        }
+        &-adress {
+          grid-column: 1/2;
+          grid-row: 4/5;
+        }
+      }
+    }
+  }
+}

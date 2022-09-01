@@ -1,0 +1,87 @@
+// css footer
+.footer {
+  &.homepage {
+    margin-top: -350px;
+    padding-top: 400px;
+  }
+  background-color: $bcg-main-cl;
+  text-align: center;
+  .container {
+    padding-top: 70px;
+      padding-bottom: 245px;
+    
+    position: relative;
+    &.--pd{
+      padding-top: 150px;
+      padding-bottom: 200px;
+    }
+  }
+  &__logo {
+    margin-bottom: 50px;
+    a{
+      height: 100%;
+      min-width: 140px;
+      padding: 0 40px;
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      height: 1px;
+      width: 430px;
+      background: $yellow-cl;
+    }
+  }
+  &__info {
+    @include text(
+      var(--body11-fs),
+      $font-main,
+      var(--footer11-lh),
+      $white-cl,
+      uppercase
+    );
+    letter-spacing: var(--footer11-ls);
+  }
+  .to-top {
+    display: flex;
+    align-items: center;
+    @include text(var(--footer10-fs), $font-main, normal, $white-cl, uppercase);
+    letter-spacing: 2px;
+    cursor: pointer;
+    transform: rotate(90deg);
+    position: absolute;
+    right: -100px;
+    top: 390px;
+    &:before {
+      content: "";
+      height: 1px;
+      width: 130px;
+      background-color: $yellow-cl;
+      margin-right: 15px;
+    }
+  }
+  @include xs {
+    .container {
+      &.--pd{
+        padding-top: 185px;
+        padding-bottom: 240px;
+      }
+    }
+    &__info {
+      & > p {
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .open {
+        max-width: 200px;
+      }
+      .adress {
+        max-width: 340px;
+      }
+    }
+    .sm-to-top {
+      top: 580px;
+    }
+  }
+}

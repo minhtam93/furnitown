@@ -1,0 +1,88 @@
+.newsdetailpage {
+  .new {
+    --mbImg: 70px;
+    --mbTitle: 30px;
+    --mwTitle: 750px;
+    --mbSub: 30px;
+    --mbTime: 40px;
+    --mwInfo: 670px;
+    --topBackToPage: -130px;
+    --rightBackToPage: 60px;
+    @include text(
+      var(--body12-fs),
+      $font-main,
+      var(--body12-lh-22),
+      $text-blacklight-2-cl,
+      none
+    );
+    .container {
+      position: relative;
+      .back-to-all {
+        position: absolute;
+        top: var(--topBackToPage);
+        right: var(--rightBackToPage);
+      }
+    }
+    &__img {
+      margin-bottom: var(--mbImg);
+    }
+    &__title {
+      margin-bottom: var(--mbTitle);
+      @include text(
+        var(--body20-fs),
+        $font-secondary,
+        var(--body20-lh),
+        $text-blacklight-2-cl,
+        uppercase
+      );
+      letter-spacing: var(--body20-ls);
+      max-width: var(--mwTitle);
+    }
+    &__sub {
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: var(--mbSub);
+      max-width: var(--mwInfo);
+    }
+    &__time {
+      font-style: italic;
+      margin-bottom: var(--mbTime);
+    }
+    &__info {
+      max-width: var(--mwInfo);
+    }
+  }
+  .other-new {
+    padding-top: 132px;
+    padding-bottom: 60px;
+    &__title {
+      padding-bottom: 45px;
+      @include text(
+        var(--body11-fs),
+        $font-main,
+        normal,
+        $text-blacklight-2-cl,
+        uppercase
+      );
+      font-weight: bold;
+    }
+  }
+
+  @include md {
+    .new {
+      --mbImg: 30px;
+      --mbTitle: 15px;
+      --mbSub: 20px;
+      --mbTime: 20px;
+      --rightBackToPage: 0;
+    }
+    .other-new {
+      padding-top: 70px;
+    }
+  }
+  @include sm {
+    .new {
+      --topBackToPage: -50px;
+    }
+  }
+}

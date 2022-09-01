@@ -1,0 +1,380 @@
+// CSS HOMEPAGE
+// Ví dụ
+@include keyframes(circle) {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 200%);
+  }
+}
+
+@keyframes rampUp {
+  0% {
+    transform: translateY(-50px)
+  }
+  100% {
+    transform: translateY(0)
+  }
+}
+
+@keyframes rampDown {
+  0% {
+    transform: translateY(50px)
+  }
+  100% {
+    transform: translateY(0)
+  }
+}
+
+.slider {
+  position: relative;
+  height: var(--hTop);
+  overflow: hidden;
+  &__list {
+    height: 100%;
+    .flickity-viewport {
+      height: 100% !important;
+    }
+    &-item {
+      @include size(100%, 100%);
+      .img {
+        height: 100%;
+        img {
+          @include size(100%, 100%);
+          object-fit: cover;
+        }
+      }
+      .content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        .heading {
+          @include text(
+            var(--slider80-fs),
+            $font-secondary,
+            inherit,
+            $white-cl,
+            uppercase
+          );
+          @include transition($t);
+          @include visible(0);
+        }
+        .desc {
+          @include text(
+            var(--slider12-fs),
+            $font-main,
+            var(--slider12-lh),
+            $white-cl,
+            uppercase
+          );
+          font-weight: bold;
+          margin: 20px auto 52px;
+          @include transition($t);
+          @include visible(0);
+        }
+        .btnmain {
+          cursor: pointer;
+          border: 1px solid;
+          padding: 10px 33px;
+          border-radius: 3px;
+          display: inline-block;
+          background-color: $black-cl;
+          outline: none;
+          @include transition($t);
+          @include visible(0);
+          span {
+            font-weight: bold;
+            @include text(
+              var(--slider11-fs),
+              $font-main,
+              inherit,
+              $white-cl,
+              uppercase
+            );
+          }
+          &:hover {
+            background-color: $white-cl;
+            @include transition($t);
+            span {
+              color: $black-cl;
+            }
+          }
+        }
+      }
+      &.is-selected {
+        .heading {
+          @include visible(1);
+          animation: rampUp 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+          transition-delay: .2s;
+        }
+        .desc {
+          @include visible(1);
+          animation: rampDown 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+          animation-delay: .3s;
+        }
+        .btnmain {
+          @include visible(1);
+          animation: rampDown 0.9s cubic-bezier(0.65, 0, 0.35, 1) both;
+          animation-delay: .4s;
+        }
+      }
+    }
+  }
+  &__bottom {
+    &-scroll {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      .mouse {
+        margin: 6px 0 10px;
+        position: relative;
+        .--border {
+          width: 25px;
+        }
+        .--circle {
+          width: 7px;
+          position: absolute;
+          left: 50%;
+          top: 10px;
+          @include transition($t);
+          @include animation(circle 2s infinite);
+        }
+        &:before {
+          --hLine: 120px;
+          content: "";
+          width: 2px;
+          height: 120px;
+          background-color: $white-cl;
+          position: absolute;
+          top: -130px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      .info {
+        font-weight: bold;
+        @include text(
+          var(--slider11-fs),
+          $font-main,
+          inherit,
+          $white-cl,
+          uppercase
+        );
+      }
+    }
+    &-control {
+      position: absolute;
+      bottom: 20px;
+      right: 60px;
+      @include mid(true);
+      justify-content: flex-end;
+      height: 40px;
+      cursor: pointer;
+      .button {
+        @include size(60px, 100%);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $white-cl;
+        @include transition($t);
+        span {
+          letter-spacing: var(--body14-ls);
+        }
+        &:hover {
+          background-color: $yellow-cl;
+        }
+        .arrow {
+          width: 30px;
+        }
+        &.pre {
+          @include transform(rotate(-180deg));
+          margin-right: -1px;
+        }
+      }
+    }
+  }
+  @include md {
+    &__bottom {
+      &-scroll {
+        .mouse {
+          &:before {
+            top: -80px;
+            height: 70px;
+          }
+        }
+      }
+    }
+  }
+  @include xs {
+    &__list {
+      &-item {
+        .content {
+          width: 80%;
+          top: 75%;
+          .--text-cl-xs {
+            color: $black-cl;
+          }
+          .svg-black{
+            filter: invert(1);
+            width: 100%;
+          }
+          .desc {
+            margin-bottom: 40px;
+            margin-top: 10px;
+          }
+        }
+        .img {
+          img {
+            height: 50%;
+          }
+        }
+      }
+    }
+    &__bottom {
+      display: none;
+    }
+  }
+}
+
+.products {
+  --pbText: 95px;
+  --mbPenText: 110px;
+  padding-top: 145px;
+  .product {
+    &__top {
+      &-left {
+        .info {
+          line-height: var(--body12-lh);
+          max-width: 380px;
+          padding-bottom: var(--pbText);
+          font-family: $font-main;
+          font-size: var(--body12-fs);
+        }
+        .product {
+          .img {
+            padding-bottom: 53%;
+          }
+        }
+      }
+      &-right {
+        .product {
+          .img {
+            padding-bottom: 93%;
+          }
+        }
+      }
+    }
+    &__center {
+      padding: 55px 0;
+      .product {
+        .img {
+          padding-bottom: 35.5%;
+        }
+      }
+    }
+    &__bottom {
+      &-left {
+        .product {
+          .img {
+            padding-bottom: 112%;
+          }
+        }
+      }
+      &-right {
+        .product {
+          margin-bottom: var(--mbPenText);
+          .img {
+            padding-bottom: 70%;
+          }
+        }
+        .content {
+          position: relative;
+          p {
+            @include text(var(--body14-fs), $font-third, var(--body18-lh), $white-cl, none);
+            font-family: "Libre Baskerville", serif;
+            text-align: right;
+            margin-left: 50px;
+            position: absolute;
+            z-index: 1;
+            span {
+              color: $yellow-cl;
+            }
+          }
+          .img {
+            max-width: 270px;
+            position: absolute;
+            bottom: -155px;
+            right: -94px;
+          }
+        }
+      }
+    }
+  }
+  @include md{
+    padding-top: 110px;
+    --mbPenText: 80px;
+  }
+  @include sm {
+    --pbText: 45px;
+    --mbPenText: 50px;
+  }
+  @include xs {
+    padding-top: 30px;
+    .product {
+      .heading{
+        margin-bottom: 20px;
+      }
+      &__top {
+        &.grid {
+          grid-gap: 45px;
+        }
+        &-left {
+          .info {
+            display: none;
+          }
+        }
+      }
+      &__center {
+        padding-top: 45px;
+        padding-bottom: 45px;
+        .product {
+          .imgs {
+            .img {
+              padding-bottom: 75%;
+            }
+          }
+        }
+      }
+      &__bottom {
+        margin-bottom: 105px;
+        &.grid {
+          grid-gap: 45px;
+        }
+        &-right {
+          .product {
+            margin-bottom: 100px;
+          }
+          .content {
+            p {
+              margin-left: 0;
+              text-align: center;
+              font-size: 18px;
+            }
+            .img {
+              bottom: -300px;
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

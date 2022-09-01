@@ -1,0 +1,44 @@
+.productpage {
+  .products {
+    --wProductItem: 32%;
+    --hProductItem: 505px;
+    padding-top: var(--pd-section);
+    .carousel-cell {
+      width: var(--wProductItem);
+      height: var(--hProductItem);
+      margin-right: 30px;
+    }
+    .product-list {
+      margin-bottom: 35px;
+      position: relative;
+      padding-bottom: 50px;
+      &:not(:last-child) {
+        border-bottom: 1px solid $line-gray-dark-cl;
+      }
+      &:last-child {
+        margin-bottom: 45px;
+      }
+      .btns{
+        height: 0;
+        position: absolute;
+        right: 0;
+      }
+    }
+
+    //pre-nextbtn custom
+    .slider__bottom-control {
+      right: 10px;
+      bottom: -15px;
+      .button {
+        background-color: $black-cl;
+      }
+    }
+    @include sm {
+      --wProductItem: 50%;
+      --hProductItem: auto;
+    }
+    @include xs {
+      --wProductItem: 100%;
+    }
+  }
+}

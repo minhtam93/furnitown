@@ -1,0 +1,257 @@
+// css header
+.header {
+  --pBtnMenu: 35vh;
+  --wBtnMenu: 180px;
+  --hBtnMenu: 180px;
+  position: relative;
+  .container-fluid {
+    max-width: $container-max-width;
+  }
+  &.--banner {
+    .header__button {
+      top: 270px;
+    }
+  }
+  &__button {
+    z-index: 2;
+    cursor: pointer;
+    position: absolute;
+    top: var(--pBtnMenu);
+    left: 0;
+    background-color: $bcg-main-cl;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @include transition($t);
+    @include size(var(--wBtnMenu));
+    &.--top {
+      top: 270px;
+    }
+    .logo {
+      margin-top: 36px;
+      margin-bottom: 30px;
+      line-height: normal;
+    }
+    .back {
+      display: none;
+    }
+    &:hover {
+      background-color: $white-cl;
+      width: 207px;
+      @include transition($t);
+      .logo {
+        display: none;
+      }
+      .hambuger {
+        display: none;
+      }
+      .back {
+        display: inherit;
+        margin-top: 36px;
+        &__text {
+          @include text(
+            var(--slider12-fs),
+            $font-main,
+            normal,
+            $black-cl,
+            uppercase
+          );
+          font-weight: bold;
+          position: relative;
+          margin-top: 73px;
+          &:after {
+            content: "";
+            height: 1px;
+            width: 88px;
+            background-color: $black-cl;
+            position: absolute;
+            bottom: 3px;
+            left: 52px;
+            @include transition($t);
+          }
+        }
+        &__logo {
+          max-width: 90px;
+          margin-left: 24px;
+        }
+      }
+    }
+    &.is-active {
+      @include visible(0);
+      @include transition($t);
+    }
+  }
+  
+  .menu {
+    @include visible(0);
+    @include transition($t);
+    &.is-active {
+      @include visible(1);
+      @include transition($t);
+    }
+    ul {
+      height: 100%;
+      @include mid(true);
+      li {
+        height: 100%;
+        margin-right: 55px;
+       
+        position: relative;
+        &:last-child {
+          margin-right: 0;
+        }
+        a {
+          font-weight: bold;
+          @include text(
+            var(--slider11-fs),
+            $font-main,
+            normal,
+            $white-cl,
+            uppercase
+          );
+          display: flex;
+          align-items: center;
+          height: 100%;
+          overflow: hidden;
+          img {
+            max-width: 55px;
+          }
+        }
+        &:not(.--line-none) a:after{
+          content: '';
+          height: 2px;
+          width: 100%;
+          background-color: $white-cl;
+          position: absolute;
+          top: 70%;
+          left: 0;
+          @include transform(scaleX(0));
+          @include transition($t cubic-bezier(.03,.52,.7,.63));
+        } 
+        &:hover {
+          &:not(.--line-none) a:after{
+            @include transition($t cubic-bezier(.03,.52,.7,.63));
+            @include transform(scaleX(1));
+          }
+        }
+      }
+    }
+  }
+  .menumobile {
+    display: none;
+  }
+
+  @include maxW(1440px) {
+    &__button {
+      &.hide-mw-1440 {
+        display: none;
+      }
+    }
+    .menu{
+      &.show-mw-1440 {
+        @include visible(1);
+      }
+    }
+  }
+
+  @include md {
+    --pBtnMenu: 30vh;
+    --wBtnMenu: 140px;
+    --hBtnMenu: 140px;
+    &__button {
+      .logo {
+        margin-bottom: 20px;
+      }
+      &:hover {
+        width: 170px;
+        .back {
+          margin-top: 24px;
+        }
+      }
+    }
+  }
+  @include sm {
+    &__button {
+      display: none;
+    }
+  }
+  @include xs {
+   
+    .menu {
+      display: none;
+    }
+    .menumobile {
+      display: block;
+      height: 70px;
+      .container-fluid {
+        @include mid(true);
+        justify-content: space-between;
+        height: 100%;
+      }
+      &__left {
+        @include mid(true);
+        height: 100%;
+        .hambuger {
+          margin-right: 20px;
+        }
+        span {
+          font-weight: bold;
+          @include text(
+            var(--body18-fs),
+            $font-main,
+            normal,
+            $white-cl,
+            uppercase
+          );
+        }
+      }
+      img {
+        max-width: 60px;
+      }
+    }
+  }
+}
+
+.detailpage {
+  --height-header: 100px;
+  --mwLogo: 90px;
+  .header {
+    height: var(--height-header);
+    .container-fluid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &.header-fixed {
+        background-color: $white-cl;
+      }
+      .share-top {
+        position: unset;
+      }
+      .detail-logo {
+        cursor: pointer;
+        height: 100%;
+        max-width: var(--mwLogo);
+        display: flex;
+      }
+      @include text(
+        var(--slider80-fs),
+        $font-secondary,
+        inherit,
+        $white-cl,
+        uppercase
+      );
+      .back-to-all {
+        cursor: pointer;
+        height: 100%;
+        span {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+  @include sm {
+    --height-header: 70px;
+    --mwLogo: 60px;
+  }
+}
+
